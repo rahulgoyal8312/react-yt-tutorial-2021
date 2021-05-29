@@ -1,4 +1,4 @@
-# Expense Tracker
+# # Expense Tracker
 
 ## Getting Started with Create React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -9,8 +9,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. npm start
 
 ## Topics covered:
-1. Hello React - Basic overview 
+1. <b>Hello React - Basic overview</b> <br>
 [![ReactJS Overview](https://img.youtube.com/vi/c_k9rb4EhQI/0.jpg)](https://www.youtube.com/watch?v=c_k9rb4EhQI)
 
-2. JSX and React Elements
+<br>
+
+2. <b>JSX and React Elements</b> <br>
 [![JSX and React Elements](https://img.youtube.com/vi/zlFYriEFH-M/0.jpg)](https://www.youtube.com/watch?v=zlFYriEFH-M)
