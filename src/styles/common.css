@@ -1,0 +1,84 @@
+/* Reusable Material */
+.pill {
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: inline-block;
+    background-color: aliceblue;
+}
+
+.td-none {
+    text-decoration: none;
+}
+
+.pill.info {
+    background-color: var(--theme-offset-color);
+}
+
+/* Padding or Margin */
+.pl-5 {
+    padding-left: 5px;
+}
+.pr-5 {
+    padding-right: 5px;
+}
+.ml-5 {
+    margin-left: 5px;
+}
+.mr-5 {
+    margin-right: 5px;
+}
+
+/* Overlay Loader */
+.loader-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 98%;
+    width: 100%;
+    z-index: 1020;
+    background-color: rgba(255, 255, 255, 0.507);
+    padding: 0px;
+}
+
+.loader-overlay[data-show="false"] {
+    display: none;
+}
+
+.loader-overlay .load {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.loader-overlay__animation {
+    border: 6px solid #f3f3f3;
+    border-radius: 50%;
+    position: fixed;
+    width: 25px;
+    height: 25px;
+    top: 40%;
+    left: 48.5%;
+    transform: translate(-48.5%, -40%);
+    border-top: 6px solid var(--theme-color);
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

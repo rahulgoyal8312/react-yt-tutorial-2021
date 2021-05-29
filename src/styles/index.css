@@ -1,0 +1,83 @@
+@import url("./flexbox.css");
+@import url("./common.css");
+
+:root {
+  --theme-color: #308D46;
+  --theme-light-color: whiteSmoke;
+  --theme-offset-color: #308d462d;
+  --theme-dark-color: #564a4a;
+
+  --grey-900: #dadada;
+
+  --color-white: white;
+  --color-black: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Sidebar Container */
+.sidebar-container {
+  min-height: 100vh;
+  position: fixed;
+  width: 17.5%;
+  background-color: var(--theme-light-color);
+  box-shadow: 1px 0px 5px 0px #dfdfdf;
+}
+
+.sidebar-container__brand {
+  background-color: var(--theme-color);
+  color: var(--color-white);
+  font-weight: 500;
+  text-align: center;
+  padding: 16px;
+  font-size: 20px;
+  letter-spacing: 0.025em;
+}
+
+.sidebar-container__list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar-container__list ul li {
+  padding: 8px;
+}
+
+.sidebar-container__list ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: var(--theme-offset-color);
+}
+
+.sidebar-container__list ul li a span:first-child {
+  color: var(--color-black);
+}
+
+.sidebar-container__list ul li a span:last-child {
+  color: var(--color-black);
+  padding-left: 20px;
+}
+
+.sidebar-container__list ul li a.active {
+  background-color: var(--theme-color);
+  color: var(--color-white);
+}
+
+.sidebar-container__list ul li a.active span {
+  color: inherit;
+}
+
+.layout-container {
+  position: relative;
+  margin-left: 17.5%;
+}

@@ -1,0 +1,40 @@
+/* Flexbox */
+.flexbox {
+    display: flex;
+}
+
+.flexbox-reverse {
+    flex-direction: row-reverse;
+}
+
+.flexbox-column {
+    flex-direction: column;
+}
+
+.flexbox-child__fb50 {
+    flex-basis: 50%;
+}
+
+.flexbox-child__fb15 {
+    flex-basis: 15%;
+}
+
+.flexbox-child__fb85 {
+    flex-basis: 85%;
+}
+
+.flexbox-align-center {
+    align-items: center;
+}
+
+.flexbox-justify-between {
+    justify-content: space-between;
+}
+
+.flexbox-justify-center {
+    justify-content: center;
+}
+
+.flexbox-align-baseline {
+    align-items: baseline;
+}
