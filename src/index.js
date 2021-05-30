@@ -2,7 +2,8 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 
-const element = <h1>Hello World, first Element Here!</h1>
+// const element = <h1>Hello World, first Element Here!</h1>
+// const element = <App/>
 
 ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(element, document.getElementById('root'));

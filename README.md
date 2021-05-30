@@ -16,3 +16,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 2. <b>JSX and React Elements</b> <br>
 [![JSX and React Elements](https://img.youtube.com/vi/zlFYriEFH-M/0.jpg)](https://www.youtube.com/watch?v=zlFYriEFH-M)
+
+<br>
+
+3. <b>React Components and Props</b> <br>
+[![React Components and Props](https://img.youtube.com/vi/bULIrYTOEYQ/0.jpg)](https://www.youtube.com/watch?v=bULIrYTOEYQ)
