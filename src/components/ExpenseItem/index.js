@@ -5,6 +5,8 @@ const ExpenseItem = ({ item, ...rest }) => {
         return month[m]
     }
 
+    // Add Event Listeners for Delete and Edit
+
     return (
         <li className="flexbox flexbox-justify-between">
             <div className="flexbox">
