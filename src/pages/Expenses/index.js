@@ -5,17 +5,19 @@ const Expenses = () => {
     let expenseList = [
         {
             id: 1,
-            name: "Grocery",
+            title: "Grocery",
             amount: 324.44,
             date: new Date(2021, 4, 5),
-            description: ""
+            description: "",
+            type: 2
         },
         {
             id: 2,
-            name: "Mobile Bill",
+            title: "Mobile Bill",
             amount: 470,
             date: new Date(2021, 4, 10),
-            description: ""
+            description: "",
+            type: 1
         }
     ]
 

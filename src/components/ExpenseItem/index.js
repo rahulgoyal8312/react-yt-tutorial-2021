@@ -12,10 +12,16 @@ const ExpenseItem = ({ item, ...rest }) => {
                     <div className="month">{getMonthName(item.date.getMonth())}</div>
                     <div className="day">{item.date.getDate()}</div>
                 </div>
-                <h3 className="title">{item.name}</h3>
+                <h3 className="title">{item.title}</h3>
             </div>
             <div className="flexbox flexbox-align-center">
                 <div className="pill">{item.amount} INR</div>
+                <button className="actions">
+                    <span className="material-icons edit">edit</span>
+                </button>
+                <button className="actions">
+                    <span className="material-icons delete">delete</span>
+                </button>
             </div>
         </li>
     )

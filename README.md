@@ -21,3 +21,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 3. <b>React Components and Props</b> <br>
 [![React Components and Props](https://img.youtube.com/vi/bULIrYTOEYQ/0.jpg)](https://www.youtube.com/watch?v=bULIrYTOEYQ)
+
+## Git Cheat Sheet
+Source: Github Education
+<object data="https://education.github.com/git-cheat-sheet-education.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="https://education.github.com/git-cheat-sheet-education.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://education.github.com/git-cheat-sheet-education.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
