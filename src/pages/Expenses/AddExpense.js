@@ -1,4 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import ExpenseForm from "../../components/ExpenseForm"
+import { postExpense } from "../../services"
 
 const AddExpense = ({ onSubmitHandler }) => {
 
@@ -13,15 +15,15 @@ const AddExpense = ({ onSubmitHandler }) => {
         date: ""
     })
     const [formProcessing, setFormProcessing] = useState(false)
+    const [isValidForm, setIsValidForm] = useState(true);
 
     const inputHandler = event => {
-        console.log(event)
+        // console.log(event)
         // setTitle(event.target.value);
         setExpenseData({
             ...expenseData,
             [event.target.name]: event.target.value
         })
-
     }
 
     // const updateAmountHandler = e => {
@@ -32,11 +34,24 @@ const AddExpense = ({ onSubmitHandler }) => {
         e.preventDefault();
         // console.log({ title, amount })
         setFormProcessing(true)
-        setTimeout(() => {
-            // setTitle("")
-            // setAmount("")
+        // setTimeout(() => {
+        //     // setTitle("")
+        //     // setAmount("")
 
-            onSubmitHandler(expenseData)
+        //     onSubmitHandler(expenseData)
+        //     setExpenseData({
+        //         title: "",
+        //         amount: "",
+        //         description: "",
+        //         type: "",
+        //         date: ""
+        //     })
+        //     setFormProcessing(false)
+        // }, 1000);
+
+        postExpense(expenseData)
+        .then(() => {
+            console.log("Data saved!")
             setExpenseData({
                 title: "",
                 amount: "",
@@ -45,8 +60,22 @@ const AddExpense = ({ onSubmitHandler }) => {
                 date: ""
             })
             setFormProcessing(false)
-        }, 1000);
+        })
+        .catch(error => {
+            console.log(error.message);
+            setFormProcessing(false)
+        })
     }
+
+    useEffect(() => {
+        if(new Date(expenseData.date) > new Date()) {
+            alert("Date cannot be greater than current date");
+            setIsValidForm(false);
+        }
+        else {
+            setIsValidForm(true);
+        }
+    }, [expenseData.date])
 
     return (
         <div className="layout-container__wrapper">
@@ -60,52 +89,12 @@ const AddExpense = ({ onSubmitHandler }) => {
                 <h3>Add Expense Log</h3>
             </div>
             <hr />
-            <form autoComplete={"off"} onSubmit={submitHandler}>
-                <div className="form-wrap">
-                    <label htmlFor="title">Title</label>
-                    <input
-                        type="text"
-                        placeholder="Enter title"
-                        name="title"
-                        className="form-input"
-                        onChange={inputHandler}
-                        value={expenseData.title}
-                        required
-                    />
-                </div>
-                <div className="form-wrap">
-                    <label htmlFor="description">Description</label>
-                    <textarea
-                        name="description"
-                        onChange={inputHandler}
-                        className="form-textarea"
-                        value={expenseData.description}
-                        placeholder="Enter Description"
-                    ></textarea>
-                </div>
-
-                <div className="form-wrap">
-                    <label htmlFor="amount">Amount</label>
-                    <input
-                        type="number"
-                        placeholder="Enter Amount"
-                        name="amount"
-                        className="form-input"
-                        onChange={inputHandler}
-                        value={expenseData.amount}
-                        min="0"
-                        required
-                    />
-                </div>
-                <div className="flexbox flexbox-reverse">
-                    <button className="btn" type="submit">
-                        <span>Add Expense</span>
-                    </button>
-                    <button className="btn mr-5" type="reset">
-                        <span>Clear</span>
-                    </button>
-                </div>
-            </form>
+            <ExpenseForm
+                data={expenseData}
+                inputHandler={inputHandler}
+                submitHandler={submitHandler}
+                isValidForm={isValidForm}
+            />
         </div>
     )
 }

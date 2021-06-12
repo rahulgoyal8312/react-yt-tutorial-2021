@@ -1,4 +1,4 @@
-const ExpenseItem = ({ item, ...rest }) => {
+const ExpenseItem = ({ item, deleteHandler, ...rest }) => {
 
     const getMonthName = m => {
         let month = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -21,7 +21,7 @@ const ExpenseItem = ({ item, ...rest }) => {
                 <button className="actions">
                     <span className="material-icons edit">edit</span>
                 </button>
-                <button className="actions">
+                <button onClick={() => deleteHandler(item.id)} className="actions">
                     <span className="material-icons delete">delete</span>
                 </button>
             </div>

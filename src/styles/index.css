@@ -221,3 +221,8 @@ button[type="submit"] {
 button[type="reset"] {
   background-color: rgb(245, 63, 63);
 }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

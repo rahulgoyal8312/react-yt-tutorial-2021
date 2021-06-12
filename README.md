@@ -23,7 +23,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 [![React Components and Props](https://img.youtube.com/vi/bULIrYTOEYQ/0.jpg)](https://www.youtube.com/watch?v=bULIrYTOEYQ)
 
 4. <b>React State and Form Handling</b> <br>
-[![React Components and Props](https://img.youtube.com/vi/ejxtKJ58sw0/0.jpg)](https://www.youtube.com/watch?v=ejxtKJ58sw0)
+[![React State and Form Handling](https://img.youtube.com/vi/ejxtKJ58sw0/0.jpg)](https://www.youtube.com/watch?v=ejxtKJ58sw0)
+
+5. <b>React useEffect and HTTP Calls</b> <br>
+[![React useEffect and HTTP Calls](https://img.youtube.com/vi/1RH2QZ-FUvs/0.jpg)](https://www.youtube.com/watch?v=1RH2QZ-FUvs)
 
 ## # Complete Playlist: 
 https://youtube.com/playlist?list=PLxxcsXH6p7bhV9DglLKg7DJMr_AK28x6c
