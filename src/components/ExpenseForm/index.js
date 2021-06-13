@@ -1,23 +1,4 @@
-import { useEffect } from "react"
-
-const ExpenseForm = ({ inputHandler, submitHandler, isValidForm, data }) => {
-
-    // useEffect(() => {
-
-    //     const identifier = setTimeout(() => {
-    //         if(data.title.length > 5) {
-    //             console.log("Title has correct length now!")
-    //         }
-    //     }, 500);
-
-    //     return () => {
-    //         // console.log("Cleanup of useEffect!")
-    //         clearTimeout(identifier)
-    //     }
-    // }, [data.title, data.date]);
-
-    // console.log("Inside component!")
-
+const ExpenseForm = ({ inputHandler, submitHandler, isValidForm, data, operation }) => {
     return (
         <form autoComplete={"off"} onSubmit={submitHandler}>
             <div className="form-wrap">
@@ -88,11 +69,14 @@ const ExpenseForm = ({ inputHandler, submitHandler, isValidForm, data }) => {
 
             <div className="flexbox flexbox-reverse">
                 <button disabled={!isValidForm} className="btn" type="submit">
-                    <span>Add Expense</span>
+                    <span>{operation.toUpperCase()} Expense</span>
                 </button>
-                <button className="btn mr-5" type="reset">
-                    <span>Clear</span>
-                </button>
+                {
+                    operation !== "edit" && 
+                    <button className="btn mr-5" type="reset">
+                        <span>Clear</span>
+                    </button>
+                }
             </div>
         </form>
     )

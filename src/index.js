@@ -2,10 +2,13 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 
-// const element = <h1>Hello World, first Element Here!</h1>
-// const element = <App/>
+import { BrowserRouter } from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>, 
+document.getElementById('root'));
 // ReactDOM.render(element, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function

@@ -42,3 +42,31 @@ export const postExpense = async (payload) => {
     }
     throw new Error("Something went wrong!");
 }
+
+export const fetchExpenseById = async (id) => {
+    const response = await fetch(`https://react-tutorial-2021-default-rtdb.firebaseio.com/expense-tracker/${id}.json`)
+
+    const data = await response.json()
+
+    if(!response.ok || !data) {
+        throw new Error("Something went wrong!");
+    }
+
+    return {
+        ...data,
+        id
+    };
+}
+
+export const updateExpenseById = async (id, payload) => {
+
+    const response = await fetch(`https://react-tutorial-2021-default-rtdb.firebaseio.com/expense-tracker/${id}.json`, {
+        method: "PUT",
+        body: JSON.stringify(payload)
+    })
+
+    if(response.ok) {
+        return true;
+    }
+    throw new Error("Something went wrong!");
+}

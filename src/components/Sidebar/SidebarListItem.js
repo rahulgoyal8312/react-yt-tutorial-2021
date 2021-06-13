@@ -1,17 +1,13 @@
-const SidebarListItem = ({ item, onItemClick, active, ...rest }) => {
+import { NavLink } from "react-router-dom";
 
-    const clickHandler = event => {
-        event.preventDefault();
-        // console.log("Clicked!")
-        onItemClick(item.id)
-    }
+const SidebarListItem = ({ item, ...rest }) => {
 
     return (
         <li>
-            <a href={item.path} onClick={clickHandler} className={active ? "active" : ""}>
+            <NavLink to={item.path} activeClassName={"active"} exact>
                 <span className="material-icons">{item.icon}</span>
                 <span>{item.name}</span>
-            </a>
+            </NavLink>
         </li>
     )
 }

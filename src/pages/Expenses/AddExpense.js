@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import ExpenseForm from "../../components/ExpenseForm"
-import { postExpense } from "../../services"
+import { fetchExpenseById, postExpense, updateExpenseById } from "../../services"
 
-const AddExpense = ({ onSubmitHandler }) => {
+const AddExpense = () => {
 
-    // const [ title, setTitle ] = useState("") 
-    // const [ amount, setAmount ] = useState("") 
+    const params = useParams();
 
     const [expenseData, setExpenseData] = useState({
         title: "",
@@ -16,55 +16,50 @@ const AddExpense = ({ onSubmitHandler }) => {
     })
     const [formProcessing, setFormProcessing] = useState(false)
     const [isValidForm, setIsValidForm] = useState(true);
+    const [operation, setOperation] = useState("add")
+    const [notFound, setNotFound] = useState(false)
 
     const inputHandler = event => {
-        // console.log(event)
-        // setTitle(event.target.value);
         setExpenseData({
             ...expenseData,
             [event.target.name]: event.target.value
         })
     }
 
-    // const updateAmountHandler = e => {
-    //     // setAmount(e.target.value)
-    // }
-
     const submitHandler = e => {
         e.preventDefault();
-        // console.log({ title, amount })
         setFormProcessing(true)
-        // setTimeout(() => {
-        //     // setTitle("")
-        //     // setAmount("")
 
-        //     onSubmitHandler(expenseData)
-        //     setExpenseData({
-        //         title: "",
-        //         amount: "",
-        //         description: "",
-        //         type: "",
-        //         date: ""
-        //     })
-        //     setFormProcessing(false)
-        // }, 1000);
-
-        postExpense(expenseData)
-        .then(() => {
-            console.log("Data saved!")
-            setExpenseData({
-                title: "",
-                amount: "",
-                description: "",
-                type: "",
-                date: ""
+        if(operation === "edit") {
+            updateExpenseById(params.id, expenseData)
+            .then(() => {
+                console.log("Data updated!")
+                setFormProcessing(false)
             })
-            setFormProcessing(false)
-        })
-        .catch(error => {
-            console.log(error.message);
-            setFormProcessing(false)
-        })
+            .catch(error => {
+                console.log(error);
+            })
+        }
+        else {
+
+
+            postExpense(expenseData)
+                .then(() => {
+                    console.log("Data saved!")
+                    setExpenseData({
+                        title: "",
+                        amount: "",
+                        description: "",
+                        type: "",
+                        date: ""
+                    })
+                    setFormProcessing(false)
+                })
+                .catch(error => {
+                    console.log(error.message);
+                    setFormProcessing(false)
+                })
+        }
     }
 
     useEffect(() => {
@@ -77,6 +72,40 @@ const AddExpense = ({ onSubmitHandler }) => {
         }
     }, [expenseData.date])
 
+    useEffect(() => {
+        if(params.operation === "edit") {
+            setOperation(params.operation)
+            setFormProcessing(true)
+            fetchExpenseById(params.id)
+            .then(data => {
+                setExpenseData(data)
+                setFormProcessing(false)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setNotFound(true)
+            })
+        }
+        
+        return () => {
+            setOperation("add")
+            setFormProcessing(false)
+            setIsValidForm(true)
+            setExpenseData({
+                title: "",
+                amount: "",
+                description: "",
+                type: "",
+                date: ""
+            })
+            setNotFound(false)
+        }
+    }, [params])
+
+    if(notFound) {
+        return <p>ID Not found!</p>;
+    }
+
     return (
         <div className="layout-container__wrapper">
             {
@@ -86,7 +115,7 @@ const AddExpense = ({ onSubmitHandler }) => {
                 </div>
             }
             <div className="heading">
-                <h3>Add Expense Log</h3>
+                <h3>{operation.toUpperCase()} Expense Log</h3>
             </div>
             <hr />
             <ExpenseForm
@@ -94,6 +123,7 @@ const AddExpense = ({ onSubmitHandler }) => {
                 inputHandler={inputHandler}
                 submitHandler={submitHandler}
                 isValidForm={isValidForm}
+                operation={operation}
             />
         </div>
     )
